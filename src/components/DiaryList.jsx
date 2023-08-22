@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import MyButton from "./MyButton";
+import DiaryItem from "./DiaryItem";
 
 // 정렬 옵션 리스트 정의
 const sortOptionList = [
@@ -16,7 +19,11 @@ const filterOptionList = [
 // ControlMenu 컴포넌트는 현재 선택된 정렬 옵션을 보여주고, 선택할 수 있도록 함
 const ControlMenu = ({ value, onChange, optionList }) => {
   return (
-    <select value={value} onChange={(e) => onChange(e.target.value)}>
+    <select
+      className="ControlMenu"
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+    >
       {optionList.map((it, idx) => (
         <option key={idx} value={it.value}>
           {it.name}
@@ -27,6 +34,7 @@ const ControlMenu = ({ value, onChange, optionList }) => {
 };
 
 const DiaryList = ({ diaryList }) => {
+  const navigate = useNavigate();
   const [sortType, setSortType] = useState("lastest"); // 현재 선택된 정렬 타입을 상태로 관리 (기본값은 "최신순")
   const [filter, setFilter] = useState("all"); // 현재 선택된 필터 타입을 상태로 관리 (기본값은 "전체")
 
@@ -59,21 +67,30 @@ const DiaryList = ({ diaryList }) => {
   };
 
   return (
-    <div>
-      <ControlMenu
-        value={sortType}
-        onChange={setSortType} // 정렬 타입을 변경하는 함수
-        optionList={sortOptionList} // 정렬 옵션 리스트
-      />
-      <ControlMenu
-        value={filter}
-        onChange={setFilter}
-        optionList={filterOptionList}
-      />
-      {getProcessedDiaryList().map((it) => (
-        <div key={it.id}>
-          {it.content} {it.emotion}
+    <div className="DiaryList">
+      <div className="menu_wrapper">
+        <div className="left_col">
+          <ControlMenu
+            value={sortType}
+            onChange={setSortType} // 정렬 타입을 변경하는 함수
+            optionList={sortOptionList} // 정렬 옵션 리스트
+          />
+          <ControlMenu
+            value={filter}
+            onChange={setFilter}
+            optionList={filterOptionList}
+          />
         </div>
+        <div className="right_col">
+          <MyButton
+            type={"positive"}
+            text={"새 일기쓰기"}
+            onClick={() => navigate("/new")}
+          />
+        </div>
+      </div>
+      {getProcessedDiaryList().map((it) => (
+        <DiaryItem key={it.id} {...it} />
       ))}
       {/* 정렬된 일기 목록을 순회하며 일기 내용을 출력 */}
     </div>
