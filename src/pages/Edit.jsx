@@ -1,36 +1,37 @@
-import { useSearchParams, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { DiaryStateContext } from "../App";
+import DiaryEditor from "../components/DiaryEditor";
 
 const Edit = () => {
+  const [originData, setOriginData] = useState(); // 상태 정의: 선택된 일기의 원본 데이터
   const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const { id } = useParams(); // 현재 라우트의 파라미터(일기의 id)를 가져옴
 
-  const id = searchParams.get("id");
-  console.log("id : ", id);
+  const diaryList = useContext(DiaryStateContext);
 
-  const mode = searchParams.get("mode");
-  console.log("mode : ", mode);
+  useEffect(() => {
+    // 일기가 있는 경우만 처리
+    if (diaryList.length >= 1) {
+      // 선택된 ID와 일치하는 일기 찾기
+      const targetDiary = diaryList.find(
+        (it) => parseInt(it.id) === parseInt(id)
+      );
+      console.log(targetDiary);
+
+      // 일기가 있으면 상태에 설정, 없으면 홈으로 리디렉션
+      if (targetDiary) {
+        setOriginData(targetDiary);
+      } else {
+        navigate("/", { replace: true }); // 뒤로가기 방지
+      }
+    }
+  }, [id, diaryList]);
 
   return (
     <div>
-      <h1>Edit</h1>
-      <p>이곳은 일기 수정페이지 입니다.</p>
-      <button onClick={() => setSearchParams({ who: "woodstock" })}>
-        Query String 바꾸기
-      </button>
-      <button
-        onClick={() => {
-          navigate("/");
-        }}
-      >
-        HOME으로 가기
-      </button>
-      <button
-        onClick={() => {
-          navigate(-1);
-        }}
-      >
-        뒤로가기
-      </button>
+      {originData && <DiaryEditor isEdit={true} originData={originData} />}
+      {/* 선택된 일기데이터가 있으면 DiaryEditor를 렌더링 */}
     </div>
   );
 };
