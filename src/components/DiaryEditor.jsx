@@ -4,6 +4,7 @@ import { DiaryDispatchContext } from "../App";
 import MyHeader from "./MyHeader";
 import MyButton from "./MyButton";
 import EmotionItem from "./EmotionItem";
+import { getStringDate } from "../util/date";
 
 const env = process.env; // 현재 실행 환경의 환경 변수를 env라는 상수에 할당
 env.PUBLIC_URL = env.PUBLIC_URL || ""; // env.PUBLIC_URL이 존재하면 그 값을 사용하고, 존재하지 않으면 빈 문자열("")을 할당
@@ -35,10 +36,6 @@ const emotionList = [
     emotion_descript: "끔찍함",
   },
 ];
-
-const getStringDate = (date) => {
-  return date.toISOString().slice(0, 10); // YYYY-MM-DD
-};
 
 const DiaryEditor = ({ isEdit, originData }) => {
   const contentRef = useRef();
