@@ -22,7 +22,10 @@ const Home = () => {
       const lastDay = new Date(
         curDate.getFullYear(),
         curDate.getMonth() + 1,
-        0
+        0,
+        23,
+        59,
+        59
       ).getTime(); // 현재 월의 마지막 일을 타임스탬프로 변환
 
       setData(
