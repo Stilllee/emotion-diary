@@ -5,7 +5,7 @@ import DiaryItem from "./DiaryItem";
 
 // 정렬 옵션 리스트 정의
 const sortOptionList = [
-  { value: "lastest", name: "최신순" },
+  { value: "latest", name: "최신순" },
   { value: "oldest", name: "오래된 순" },
 ];
 
@@ -35,7 +35,7 @@ const ControlMenu = React.memo(({ value, onChange, optionList }) => {
 
 const DiaryList = ({ diaryList }) => {
   const navigate = useNavigate();
-  const [sortType, setSortType] = useState("lastest"); // 현재 선택된 정렬 타입을 상태로 관리 (기본값은 "최신순")
+  const [sortType, setSortType] = useState("latest"); // 현재 선택된 정렬 타입을 상태로 관리 (기본값은 "최신순")
   const [filter, setFilter] = useState("all"); // 현재 선택된 필터 타입을 상태로 관리 (기본값은 "전체")
 
   const getProcessedDiaryList = () => {
@@ -50,7 +50,7 @@ const DiaryList = ({ diaryList }) => {
 
     // compare 함수는 정렬을 위한 비교 함수로, sortType에 따라 최신순 또는 오래된 순으로 정렬한다.
     const compare = (a, b) => {
-      if (sortType === "lastest") {
+      if (sortType === "latest") {
         return parseInt(b.date) - parseInt(a.date); // 최신순 정렬 (날짜 내림차순)
       } else {
         return parseInt(a.date) - parseInt(b.date); // 오래된 순 정렬 (날짜 오름차순)
