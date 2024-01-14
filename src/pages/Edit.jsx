@@ -11,6 +11,11 @@ const Edit = () => {
   const diaryList = useContext(DiaryStateContext);
 
   useEffect(() => {
+    const titleElement = document.getElementsByTagName("title")[0];
+    titleElement.innerHTML = `감정 일기장 - ${id}번 일기 수정`;
+  }, []);
+
+  useEffect(() => {
     // 일기가 있는 경우만 처리
     if (diaryList.length >= 1) {
       // 선택된 ID와 일치하는 일기 찾기
