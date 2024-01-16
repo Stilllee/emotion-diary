@@ -1,70 +1,27 @@
-# Getting Started with Create React App
+# 감정 일기장
+![sRoOGv7C1t](https://github.com/Stilllee/emotion-diary/assets/108785772/7a471191-a7b2-4723-988d-c463b0730e4b)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+감정 일기장은 일상의 감정을 기록하고 관리할 수 있는 반응형 웹 애플리케이션 입니다.
+<br>
+사용자는 감정을 기반으로 일기를 작성하고, 감정 상태에 따라 일기를 쉽게 분류하고 검색할 수 있습니다.
 
-## Available Scripts
+## 목차
+- [기술 스택](#기술-스택)
+- [주요 기능](#주요-기능)
 
-In the project directory, you can run:
+## 기술 스택
+- **React**: UI를 구성하는 주요 라이브러리입니다.
+- **CSS**: 스타일링과 레이아웃을 위해 사용됩니다.
 
-### `npm start`
+## 주요 기능
+### 일기 작성
+![chrome_P0p4G9i3dw](https://github.com/Stilllee/emotion-diary/assets/108785772/20972e80-43fb-4910-b960-4c2c29d1f81e)
+- 날짜와 감정을 선택하고 일기를 작성할 수 있습니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 일기 수정
+![chrome_Sup3iYIc9J](https://github.com/Stilllee/emotion-diary/assets/108785772/77c69089-18ef-477f-8167-3b1654adb715)
+- 수정페이지에서 날짜와 감정, 일기의 내용을 수정할 수 있습니다.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 일기 삭제
+![chrome_NyUbkZW51o](https://github.com/Stilllee/emotion-diary/assets/108785772/e4856734-574a-4ae7-ae5b-4b07d2429df0)
+- 수정페이지에서 일기를 삭제할 수 있습니다.
