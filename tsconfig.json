@@ -25,7 +25,8 @@
   "paths": {
     "pages/*": ["pages/*"],
     "components/*": ["components/*"],
-    "util/*": ["util/*"]
+    "util/*": ["util/*"],
+    "assets/*": ["assets/*"]
   },
   "references": [{ "path": "./tsconfig.node.json" }]
 }
