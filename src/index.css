@@ -5,7 +5,13 @@
 
 body {
   margin: 0;
+  width: 100%;
   font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
     "Helvetica Neue", sans-serif;
+  @apply bg-bgLight;
+}
+
+#root {
+  @apply bg-white max-w-screen-sm w-full my-0 mx-auto min-h-screen h-full shadow-xl;
 }
