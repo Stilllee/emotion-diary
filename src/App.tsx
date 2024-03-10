@@ -80,8 +80,6 @@ function App() {
     });
   };
 
-  console.log(data);
-
   return (
     <>
       <DiaryStateContext.Provider value={data}>
