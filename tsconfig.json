@@ -25,7 +25,7 @@
   "paths": {
     "pages/*": ["pages/*"],
     "components/*": ["components/*"],
-    "util/*": ["util/*"],
+    "utils/*": ["utils/*"],
     "assets/*": ["assets/*"],
     "types/*": ["types/*"],
     "context/*": ["context/*"]
