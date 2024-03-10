@@ -1,3 +1,5 @@
+import { Emotion } from "utils/get-emotion-image";
+
 export enum Action {
   CREATE = "CREATE",
   UPDATE = "UPDATE",
@@ -7,20 +9,20 @@ export enum Action {
 export interface DiaryType {
   id: number;
   createdDate: number;
-  emotionId: number;
+  emotion: Emotion;
   content: string;
 }
 
 export type onCreateType = (
   createdDate: number,
-  emotionId: number,
+  emotion: Emotion,
   content: string
 ) => void;
 
 export type onUpdateType = (
   id: number,
   createdDate: number,
-  emotionId: number,
+  emotion: Emotion,
   content: string
 ) => void;
 

@@ -14,19 +14,26 @@ import {
   onUpdateType,
 } from "types/diary-types";
 import { DiaryDispatchContext, DiaryStateContext } from "context/diary-context";
+import { Emotion } from "utils/get-emotion-image";
 
 const mockData = [
   {
     id: 1,
-    createdDate: new Date().getTime(),
-    emotionId: 1,
+    createdDate: new Date("2024-03-10").getTime(),
+    emotion: Emotion.HAPPY,
     content: "1번 일기 내용",
   },
   {
     id: 2,
-    createdDate: new Date().getTime(),
-    emotionId: 2,
+    createdDate: new Date("2024-03-09").getTime(),
+    emotion: Emotion.GOOD,
     content: "2번 일기 내용",
+  },
+  {
+    id: 3,
+    createdDate: new Date("2024-02-14").getTime(),
+    emotion: Emotion.NORMAL,
+    content: "3번 일기 내용",
   },
 ];
 
@@ -49,25 +56,25 @@ function App() {
   const [data, dispatch] = useReducer(reducer, mockData);
   const idRef = useRef(3);
 
-  const onCreate: onCreateType = (createdDate, emotionId, content) => {
+  const onCreate: onCreateType = (createdDate, emotion, content) => {
     dispatch({
       type: Action.CREATE,
       data: {
         id: idRef.current++,
         createdDate,
-        emotionId,
+        emotion,
         content,
       },
     });
   };
 
-  const onUpdate: onUpdateType = (id, createdDate, emotionId, content) => {
+  const onUpdate: onUpdateType = (id, createdDate, emotion, content) => {
     dispatch({
       type: Action.UPDATE,
       data: {
         id,
         createdDate,
-        emotionId,
+        emotion,
         content,
       },
     });
