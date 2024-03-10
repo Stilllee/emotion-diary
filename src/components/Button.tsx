@@ -1,22 +1,34 @@
+export enum ButtonType {
+  DEFAULT = "DEFAULT",
+  POSITIVE = "POSITIVE",
+  NEGATIVE = "NEGATIVE",
+}
+
 type ButtonProps = {
   text: string;
-  type: "DEFAULT" | "POSITIVE" | "NEGATIVE";
+  type: ButtonType;
   onClick: () => void;
+  className?: string;
 };
 
-export default function Button({ text, type, onClick }: ButtonProps) {
+export default function Button({
+  text,
+  type,
+  onClick,
+  className,
+}: ButtonProps) {
   const btnColor =
-    type === "DEFAULT"
+    type === ButtonType.DEFAULT
       ? "bg-btnLight"
-      : type === "POSITIVE"
+      : type === ButtonType.POSITIVE
       ? "bg-green text-white"
-      : type === "NEGATIVE"
+      : type === ButtonType.NEGATIVE
       ? "bg-red text-white"
       : "";
 
   return (
     <button
-      className={`${btnColor} rounded-md py-2 px-5 whitespace-nowrap`}
+      className={`${btnColor} ${className} rounded-md py-2 px-5 whitespace-nowrap`}
       onClick={onClick}
     >
       {text}
