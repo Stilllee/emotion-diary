@@ -10,6 +10,8 @@ export default defineConfig({
       components: "/src/components",
       assets: "/src/assets",
       util: "/src/util",
+      types: "/src/types",
+      context: "/src/context",
     },
   },
 });
