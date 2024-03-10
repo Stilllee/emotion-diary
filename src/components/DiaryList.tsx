@@ -1,7 +1,7 @@
 import Button, { ButtonType } from "components/Button";
 import DiaryItem from "components/DiaryItem";
 
-export default function DiaryList() {
+export default function DiaryList({ data }) {
   return (
     <div>
       <div className="my-5 flex gap-3">
@@ -16,7 +16,9 @@ export default function DiaryList() {
         />
       </div>
       <div>
-        <DiaryItem />
+        {data.map((item) => (
+          <DiaryItem key={item.id} {...item} />
+        ))}
       </div>
     </div>
   );
