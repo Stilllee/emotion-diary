@@ -4,19 +4,27 @@ import emotion3 from "assets/emotion3.png";
 import emotion4 from "assets/emotion4.png";
 import emotion5 from "assets/emotion5.png";
 
-export function getEmotionImage(emotionId: number) {
-  switch (emotionId) {
-    case 1:
+export enum Emotion {
+  HAPPY = "happy",
+  GOOD = "good",
+  NORMAL = "normal",
+  BAD = "bad",
+  TERRIBLE = "terrible",
+}
+
+export function getEmotionImage(emotion: Emotion) {
+  switch (emotion) {
+    case Emotion.HAPPY:
       return emotion1;
-    case 2:
+    case Emotion.GOOD:
       return emotion2;
-    case 3:
+    case Emotion.NORMAL:
       return emotion3;
-    case 4:
+    case Emotion.BAD:
       return emotion4;
-    case 5:
+    case Emotion.TERRIBLE:
       return emotion5;
     default:
-      return null;
+      return undefined;
   }
 }
