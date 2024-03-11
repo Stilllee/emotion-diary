@@ -4,12 +4,14 @@ interface EmotionItemProps {
   emotion: Emotion;
   emotionName: string;
   isSelected: boolean;
+  onClick: (emotion: Emotion) => void;
 }
 
 export default function EmotionItem({
   emotion,
   emotionName,
   isSelected,
+  onClick,
 }: EmotionItemProps) {
   const selectedColor = isSelected
     ? `${emotionBgColor[emotion]} text-white`
@@ -17,6 +19,7 @@ export default function EmotionItem({
   return (
     <div
       className={`${selectedColor}  p-5 rounded-md cursor-pointer text-center`}
+      onClick={() => onClick(emotion)}
     >
       <img className="w-1/2 mb-3 mx-auto" src={getEmotionImage(emotion)} />
       <div>{emotionName}</div>
