@@ -1,7 +1,7 @@
 type HeaderProps = {
   title: string;
-  leftChild: React.ReactNode;
-  rightChild: React.ReactNode;
+  leftChild?: React.ReactNode;
+  rightChild?: React.ReactNode;
 };
 
 export default function Header({ title, leftChild, rightChild }: HeaderProps) {
