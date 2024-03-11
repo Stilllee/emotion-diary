@@ -67,7 +67,7 @@ function App() {
         content,
       },
     });
-    toast.success("일기가 작성되었습니다.");
+    toast.success("일기가 작성되었어요 🎉");
   };
 
   const onUpdate: onUpdateType = (id, createdDate, emotion, content) => {
@@ -80,7 +80,7 @@ function App() {
         content,
       },
     });
-    toast.success("일기가 수정되었습니다.");
+    toast.success("일기가 수정되었어요 😸");
   };
 
   const onDelete: onDeleteType = (id) => {
@@ -88,7 +88,7 @@ function App() {
       type: Action.DELETE,
       id,
     });
-    toast.success("일기가 삭제되었습니다.");
+    toast.success("일기가 삭제되었어요 😺");
   };
 
   return (
