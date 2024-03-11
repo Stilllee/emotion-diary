@@ -37,7 +37,7 @@ export default function DiaryList({ data }: DiaryListProps) {
           className="bg-btnLight rounded-md py-3 px-5 cursor-pointer"
         >
           <option value={"latest"}>최신순</option>
-          <option value={"oldest"}>오래된 순</option>
+          <option value={"oldest"}>오래된순</option>
         </select>
         <Button
           onClick={() => nav("/new")}
