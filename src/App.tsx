@@ -1,6 +1,7 @@
 import "./App.css";
 import { useReducer, useRef } from "react";
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import Home from "pages/Home";
 import New from "pages/New";
 import Edit from "pages/Edit";
@@ -66,6 +67,7 @@ function App() {
         content,
       },
     });
+    toast.success("일기가 작성되었습니다.");
   };
 
   const onUpdate: onUpdateType = (id, createdDate, emotion, content) => {
@@ -78,6 +80,7 @@ function App() {
         content,
       },
     });
+    toast.success("일기가 수정되었습니다.");
   };
 
   const onDelete: onDeleteType = (id) => {
@@ -85,10 +88,12 @@ function App() {
       type: Action.DELETE,
       id,
     });
+    toast.success("일기가 삭제되었습니다.");
   };
 
   return (
     <>
+      <ToastContainer />
       <DiaryStateContext.Provider value={data}>
         <DiaryDispatchContext.Provider value={{ onCreate, onUpdate, onDelete }}>
           <Routes>

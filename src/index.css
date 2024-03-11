@@ -1,3 +1,4 @@
+@import "react-toastify/dist/ReactToastify.css";
 @import "../node_modules/pretendard/dist/web/static/pretendard.css";
 @tailwind base;
 @tailwind components;
