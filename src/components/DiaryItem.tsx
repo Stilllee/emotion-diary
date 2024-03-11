@@ -23,7 +23,7 @@ export default function DiaryItem({
         onClick={() => nav(`/diary/${id}`)}
         className="flex-1 cursor-pointer"
       >
-        <div className="font-bold text-xl">
+        <div className="font-bold text-xl mb-1">
           {new Date(createdDate).toLocaleDateString()}
         </div>
         <div>{content}</div>
