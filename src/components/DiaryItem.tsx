@@ -26,7 +26,9 @@ export default function DiaryItem({
         <div className="font-bold text-xl mb-1">
           {new Date(createdDate).toLocaleDateString()}
         </div>
-        <div>{content}</div>
+        <div className="max-w-sm multi-line-truncate leading-6 h-12">
+          {content}
+        </div>
       </div>
       <div className="min-w-20">
         <Button onClick={() => nav(`/edit/${id}`)} text={"수정하기"} />
