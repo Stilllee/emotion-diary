@@ -1,26 +1,21 @@
-import { Emotion, getEmotionImage } from "utils/get-emotion-image";
+import { emotionBgColor, getEmotionImage } from "utils/emotion-utils";
 import Button from "components/Button";
 import { useNavigate } from "react-router-dom";
+import { DiaryType } from "types/diary-types";
 
-export default function DiaryItem({ id, createdDate, emotion, content }) {
+export default function DiaryItem({
+  id,
+  createdDate,
+  emotion,
+  content,
+}: DiaryType) {
   const nav = useNavigate();
-  const emotionBgColor =
-    emotion === Emotion.HAPPY
-      ? "bg-green"
-      : emotion === Emotion.GOOD
-      ? "bg-yellowGreen"
-      : emotion === Emotion.NORMAL
-      ? "bg-yellow"
-      : emotion === Emotion.BAD
-      ? "bg-orange"
-      : emotion === Emotion.TERRIBLE
-      ? "bg-red"
-      : "";
+  const bgColor = emotionBgColor[emotion];
   return (
     <div className="flex gap-4 justify-between py-4 border-b border-bgLight">
       <div
         onClick={() => nav(`/diary/${id}`)}
-        className={`${emotionBgColor} min-w-32 h-20 flex justify-center cursor-pointer rounded-md`}
+        className={`${bgColor} min-w-32 h-20 flex justify-center cursor-pointer rounded-md`}
       >
         <img className="w-1/2" src={getEmotionImage(emotion)} />
       </div>

@@ -1,4 +1,4 @@
-import { Emotion } from "utils/get-emotion-image";
+import { Emotion } from "utils/emotion-utils";
 
 export enum Action {
   CREATE = "CREATE",

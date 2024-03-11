@@ -12,6 +12,14 @@ export enum Emotion {
   TERRIBLE = "terrible",
 }
 
+export const emotionBgColor = {
+  [Emotion.HAPPY]: "bg-green",
+  [Emotion.GOOD]: "bg-yellowGreen",
+  [Emotion.NORMAL]: "bg-yellow",
+  [Emotion.BAD]: "bg-orange",
+  [Emotion.TERRIBLE]: "bg-red",
+};
+
 export function getEmotionImage(emotion: Emotion) {
   switch (emotion) {
     case Emotion.HAPPY:

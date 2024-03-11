@@ -14,7 +14,7 @@ import {
   onUpdateType,
 } from "types/diary-types";
 import { DiaryDispatchContext, DiaryStateContext } from "context/diary-context";
-import { Emotion } from "utils/get-emotion-image";
+import { Emotion } from "utils/emotion-utils";
 
 const mockData = [
   {
