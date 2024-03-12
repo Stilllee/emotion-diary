@@ -2,6 +2,7 @@ import { emotionBgColor, getEmotionImage } from "utils/emotion-utils";
 import Button from "components/Button";
 import { useNavigate } from "react-router-dom";
 import { DiaryType } from "types/diary-types";
+import { getStringDate } from "utils/get-string-date";
 
 export default function DiaryItem({
   id,
@@ -24,7 +25,7 @@ export default function DiaryItem({
         className="flex-1 cursor-pointer"
       >
         <div className="font-bold text-xl mb-1">
-          {new Date(createdDate).toLocaleDateString()}
+          {getStringDate(createdDate, "yyyy.mm.dd")}
         </div>
         <div className="max-w-sm multi-line-truncate leading-6 h-12">
           {content}

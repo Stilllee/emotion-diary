@@ -3,7 +3,7 @@ import EmotionItem from "./EmotionItem";
 import Button, { ButtonType } from "./Button";
 import React, { useState } from "react";
 import { getStringDate } from "utils/get-string-date";
-import { DiaryType } from "types/diary-types";
+import { CreateDiaryType, DiaryType } from "types/diary-types";
 import { useNavigate } from "react-router-dom";
 
 const emotionList = [
@@ -30,12 +30,12 @@ const emotionList = [
 ];
 
 interface EditorProps {
-  onSubmit: (input: DiaryType) => void;
+  onSubmit: (input: DiaryType | CreateDiaryType) => void;
 }
 
 export default function Editor({ onSubmit }: EditorProps) {
-  const [input, setInput] = useState({
-    createdDate: new Date(),
+  const [input, setInput] = useState<DiaryType | CreateDiaryType>({
+    createdDate: new Date().getTime(),
     emotion: Emotion.NORMAL,
     content: "",
   });
@@ -51,7 +51,7 @@ export default function Editor({ onSubmit }: EditorProps) {
 
     setInput((prev) => ({
       ...prev,
-      [name]: name === "createdDate" ? getStringDate(new Date(value)) : value,
+      [name]: name === "createdDate" ? new Date(value).getTime() : value,
     }));
   };
 
