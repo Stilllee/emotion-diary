@@ -1,9 +1,14 @@
 import { Emotion } from "utils/emotion-utils";
 import EmotionItem from "./EmotionItem";
 import Button, { ButtonType } from "./Button";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getStringDate } from "utils/get-string-date";
-import { CreateDiaryType, DiaryType } from "types/diary-types";
+import {
+  CreateDiaryType,
+  DiaryType,
+  onCreateType,
+  onUpdateType,
+} from "types/diary-types";
 import { useNavigate } from "react-router-dom";
 
 const emotionList = [
@@ -30,10 +35,12 @@ const emotionList = [
 ];
 
 interface EditorProps {
-  onSubmit: (input: DiaryType | CreateDiaryType) => void;
+  initData?: DiaryType;
+  onCreate?: (input: CreateDiaryType) => void;
+  onUpdate?: (input: DiaryType) => void;
 }
 
-export default function Editor({ onSubmit }: EditorProps) {
+export default function Editor({ onCreate, onUpdate, initData }: EditorProps) {
   const [input, setInput] = useState<DiaryType | CreateDiaryType>({
     createdDate: new Date().getTime(),
     emotion: Emotion.NORMAL,
@@ -41,6 +48,14 @@ export default function Editor({ onSubmit }: EditorProps) {
   });
 
   const nav = useNavigate();
+
+  useEffect(() => {
+    if (initData) {
+      setInput({
+        ...initData,
+      });
+    }
+  }, [initData]);
 
   const onChangeInput = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -63,7 +78,11 @@ export default function Editor({ onSubmit }: EditorProps) {
   };
 
   const onClickSubmitButton = () => {
-    onSubmit(input);
+    if (onCreate && !("id" in input)) {
+      onCreate(input as CreateDiaryType);
+    } else if (onUpdate && "id" in input) {
+      onUpdate(input as DiaryType);
+    }
   };
 
   return (

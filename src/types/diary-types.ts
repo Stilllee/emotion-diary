@@ -13,6 +13,8 @@ export interface DiaryType {
   content: string;
 }
 
+export type CreateDiaryType = Omit<DiaryType, "id">;
+
 export type onCreateType = (
   createdDate: number,
   emotion: Emotion,

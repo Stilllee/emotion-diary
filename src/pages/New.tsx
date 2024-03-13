@@ -4,13 +4,13 @@ import Header from "components/Header";
 import { DiaryDispatchContext } from "context/diary-context";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { DiaryType } from "types/diary-types";
+import { CreateDiaryType } from "types/diary-types";
 
 export default function New() {
   const dispatchContext = useContext(DiaryDispatchContext);
   const nav = useNavigate();
 
-  const onSubmit = (input: DiaryType) => {
+  const onSubmit = (input: CreateDiaryType) => {
     const { createdDate, emotion, content } = input;
     dispatchContext?.onCreate(
       new Date(createdDate).getTime(),
@@ -24,9 +24,9 @@ export default function New() {
     <>
       <Header
         title={"새 일기쓰기"}
-        leftChild={<Button text={"< 뒤로 가기"} onClick={() => nav(-1)} />}
+        leftChild={<Button text={"< 뒤로가기"} onClick={() => nav(-1)} />}
       />
-      <Editor onSubmit={onSubmit} />
+      <Editor onCreate={onSubmit} />
     </>
   );
 }

@@ -16,6 +16,7 @@ import {
 } from "types/diary-types";
 import { DiaryDispatchContext, DiaryStateContext } from "context/diary-context";
 import { Emotion } from "utils/emotion-utils";
+import NotFound from "pages/NotFound";
 
 const mockData = [
   {
@@ -101,6 +102,7 @@ function App() {
             <Route path="/new" element={<New />} />
             <Route path="/diary/:id" element={<Diary />} />
             <Route path="edit/:id" element={<Edit />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </DiaryDispatchContext.Provider>
       </DiaryStateContext.Provider>
