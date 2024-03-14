@@ -12,20 +12,27 @@ export enum Emotion {
   TERRIBLE = "terrible",
 }
 
-export const emotionNames = {
-  [Emotion.HAPPY]: "행복",
-  [Emotion.GOOD]: "좋음",
-  [Emotion.NORMAL]: "보통",
-  [Emotion.BAD]: "나쁨",
-  [Emotion.TERRIBLE]: "끔찍",
-};
-
-export const emotionBgColor = {
-  [Emotion.HAPPY]: "bg-green",
-  [Emotion.GOOD]: "bg-yellowGreen",
-  [Emotion.NORMAL]: "bg-yellow",
-  [Emotion.BAD]: "bg-orange",
-  [Emotion.TERRIBLE]: "bg-red",
+export const emotionInfo = {
+  [Emotion.HAPPY]: {
+    bgColor: "bg-green",
+    name: "행복",
+  },
+  [Emotion.GOOD]: {
+    bgColor: "bg-yellowGreen",
+    name: "좋음",
+  },
+  [Emotion.NORMAL]: {
+    bgColor: "bg-yellow",
+    name: "보통",
+  },
+  [Emotion.BAD]: {
+    bgColor: "bg-orange",
+    name: "나쁨",
+  },
+  [Emotion.TERRIBLE]: {
+    bgColor: "bg-red",
+    name: "끔찍",
+  },
 };
 
 export function getEmotionImage(emotion: Emotion) {

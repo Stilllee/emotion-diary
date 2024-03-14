@@ -1,4 +1,4 @@
-import { Emotion, emotionList, emotionNames } from "utils/emotion-utils";
+import { Emotion, emotionInfo } from "utils/emotion-utils";
 import EmotionItem from "./EmotionItem";
 import Button, { ButtonType } from "./Button";
 import React, { useEffect, useState } from "react";
@@ -76,7 +76,7 @@ export default function Editor({ onCreate, onUpdate, initData }: EditorProps) {
             <EmotionItem
               key={emotion}
               emotion={emotion}
-              emotionName={emotionNames[emotion]}
+              emotionName={emotionInfo[emotion].name}
               isSelected={emotion === input.emotion}
               onClick={onChangeEmotion}
             />

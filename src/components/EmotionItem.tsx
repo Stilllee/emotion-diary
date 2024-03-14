@@ -1,4 +1,4 @@
-import { Emotion, emotionBgColor, getEmotionImage } from "utils/emotion-utils";
+import { Emotion, emotionInfo, getEmotionImage } from "utils/emotion-utils";
 
 interface EmotionItemProps {
   emotion: Emotion;
@@ -14,7 +14,7 @@ export default function EmotionItem({
   onClick,
 }: EmotionItemProps) {
   const selectedColor = isSelected
-    ? `${emotionBgColor[emotion]} text-white`
+    ? `${emotionInfo[emotion].bgColor} text-white`
     : "bg-btnLight";
   return (
     <div

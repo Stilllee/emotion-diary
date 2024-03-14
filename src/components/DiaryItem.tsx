@@ -1,4 +1,4 @@
-import { emotionBgColor, getEmotionImage } from "utils/emotion-utils";
+import { emotionInfo, getEmotionImage } from "utils/emotion-utils";
 import Button from "components/Button";
 import { useNavigate } from "react-router-dom";
 import { DiaryType } from "types/diary-types";
@@ -11,7 +11,7 @@ export default function DiaryItem({
   content,
 }: DiaryType) {
   const nav = useNavigate();
-  const bgColor = emotionBgColor[emotion];
+  const bgColor = emotionInfo[emotion].bgColor;
   return (
     <div className="flex gap-4 justify-between py-4 border-b border-bgLight">
       <div
