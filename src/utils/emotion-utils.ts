@@ -12,6 +12,14 @@ export enum Emotion {
   TERRIBLE = "terrible",
 }
 
+export const emotionNames = {
+  [Emotion.HAPPY]: "행복",
+  [Emotion.GOOD]: "좋음",
+  [Emotion.NORMAL]: "보통",
+  [Emotion.BAD]: "나쁨",
+  [Emotion.TERRIBLE]: "끔찍",
+};
+
 export const emotionBgColor = {
   [Emotion.HAPPY]: "bg-green",
   [Emotion.GOOD]: "bg-yellowGreen",

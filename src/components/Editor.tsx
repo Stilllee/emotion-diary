@@ -1,38 +1,10 @@
-import { Emotion } from "utils/emotion-utils";
+import { Emotion, emotionList, emotionNames } from "utils/emotion-utils";
 import EmotionItem from "./EmotionItem";
 import Button, { ButtonType } from "./Button";
 import React, { useEffect, useState } from "react";
 import { getStringDate } from "utils/get-string-date";
-import {
-  CreateDiaryType,
-  DiaryType,
-  onCreateType,
-  onUpdateType,
-} from "types/diary-types";
+import { CreateDiaryType, DiaryType } from "types/diary-types";
 import { useNavigate } from "react-router-dom";
-
-const emotionList = [
-  {
-    emotion: Emotion.HAPPY,
-    emotionName: "행복",
-  },
-  {
-    emotion: Emotion.GOOD,
-    emotionName: "좋음",
-  },
-  {
-    emotion: Emotion.NORMAL,
-    emotionName: "보통",
-  },
-  {
-    emotion: Emotion.BAD,
-    emotionName: "나쁨",
-  },
-  {
-    emotion: Emotion.TERRIBLE,
-    emotionName: "끔찍",
-  },
-];
 
 interface EditorProps {
   initData?: DiaryType;
@@ -100,11 +72,12 @@ export default function Editor({ onCreate, onUpdate, initData }: EditorProps) {
       <section>
         <h4 className="font-bold text-xl my-7">오늘의 감정</h4>
         <div className="flex justify-around gap-3 ">
-          {emotionList.map((item) => (
+          {Object.values(Emotion).map((emotion) => (
             <EmotionItem
-              key={item.emotion}
-              {...item}
-              isSelected={item.emotion === input.emotion}
+              key={emotion}
+              emotion={emotion}
+              emotionName={emotionNames[emotion]}
+              isSelected={emotion === input.emotion}
               onClick={onChangeEmotion}
             />
           ))}
