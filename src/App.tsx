@@ -17,7 +17,7 @@ import {
 import { DiaryDispatchContext, DiaryStateContext } from "context/diary-context";
 import { Emotion } from "utils/emotion-utils";
 import NotFound from "pages/NotFound";
-import ThemeContext, { ThemeProvider } from "context/theme-context";
+import ThemeContext from "context/theme-context";
 
 const mockData = [
   {
