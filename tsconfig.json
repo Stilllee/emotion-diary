@@ -28,7 +28,8 @@
     "utils/*": ["utils/*"],
     "assets/*": ["assets/*"],
     "types/*": ["types/*"],
-    "context/*": ["context/*"]
+    "context/*": ["context/*"],
+    "hooks/*": ["hooks/*"]
   },
   "references": [{ "path": "./tsconfig.node.json" }]
 }
