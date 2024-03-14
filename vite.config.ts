@@ -13,6 +13,7 @@ export default defineConfig({
       types: "/src/types",
       context: "/src/context",
       hooks: "/src/hooks",
+      api: "/src/api",
     },
   },
 });

@@ -29,7 +29,8 @@
     "assets/*": ["assets/*"],
     "types/*": ["types/*"],
     "context/*": ["context/*"],
-    "hooks/*": ["hooks/*"]
+    "hooks/*": ["hooks/*"],
+    "api/*": ["api/*"]
   },
   "references": [{ "path": "./tsconfig.node.json" }]
 }
