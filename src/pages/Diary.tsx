@@ -20,7 +20,7 @@ export default function Diary() {
       const message = await CallGPT({
         prompt: JSON.stringify(content),
       });
-      setGptData(JSON.parse(message));
+      setGptData(JSON.parse(message).action);
     } catch (error) {
     } finally {
       setIsLoading(false);
@@ -41,9 +41,7 @@ export default function Diary() {
 
   const { createdDate, emotion, content } = curDiaryItem;
 
-  console.log(typeof content);
-  console.log(content.length);
-  console.log(JSON.stringify(content));
+  console.log(gptData);
 
   return (
     <div className="overflow-hidden">
