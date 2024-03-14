@@ -13,8 +13,13 @@ body {
   @apply bg-bgLight;
 }
 
+html .dark {
+  @apply bg-bgDark;
+}
+
 #root {
   @apply bg-white max-w-screen-sm w-full my-0 mx-auto min-h-screen h-full shadow-xl px-5;
+  @apply dark:bg-mainDark;
 }
 
 .multi-line-truncate {

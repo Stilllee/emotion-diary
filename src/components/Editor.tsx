@@ -58,11 +58,11 @@ export default function Editor({ onCreate, onUpdate, initData }: EditorProps) {
   };
 
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-10 dark:text-white">
       <section>
         <h4 className="font-bold text-xl my-7">오늘의 날짜</h4>
         <input
-          className="bg-btnLight rounded-md px-5 py-2 cursor-pointer"
+          className="bg-btnLight dark:bg-btnDark rounded-md px-5 py-2 cursor-pointer"
           type="date"
           name="createdDate"
           onChange={onChangeInput}
@@ -86,7 +86,7 @@ export default function Editor({ onCreate, onUpdate, initData }: EditorProps) {
       <section>
         <h4 className="font-bold text-xl my-7">오늘의 일기</h4>
         <textarea
-          className="bg-btnLight rounded-md p-5 w-full min-h-52 resize-y"
+          className="bg-btnLight dark:bg-btnDark rounded-md p-5 w-full min-h-52 resize-y"
           placeholder="오늘은 어땠나요?"
           name="content"
           value={input.content}

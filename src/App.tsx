@@ -17,6 +17,7 @@ import {
 import { DiaryDispatchContext, DiaryStateContext } from "context/diary-context";
 import { Emotion } from "utils/emotion-utils";
 import NotFound from "pages/NotFound";
+import { ThemeProvider } from "context/theme-context";
 
 const mockData = [
   {
@@ -95,17 +96,21 @@ function App() {
   return (
     <>
       <ToastContainer />
-      <DiaryStateContext.Provider value={data}>
-        <DiaryDispatchContext.Provider value={{ onCreate, onUpdate, onDelete }}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/new" element={<New />} />
-            <Route path="/diary/:id" element={<Diary />} />
-            <Route path="edit/:id" element={<Edit />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </DiaryDispatchContext.Provider>
-      </DiaryStateContext.Provider>
+      <ThemeProvider>
+        <DiaryStateContext.Provider value={data}>
+          <DiaryDispatchContext.Provider
+            value={{ onCreate, onUpdate, onDelete }}
+          >
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/new" element={<New />} />
+              <Route path="/diary/:id" element={<Diary />} />
+              <Route path="edit/:id" element={<Edit />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </DiaryDispatchContext.Provider>
+        </DiaryStateContext.Provider>
+      </ThemeProvider>
     </>
   );
 }

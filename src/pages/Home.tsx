@@ -1,5 +1,6 @@
 import Button from "components/Button";
 import DiaryList from "components/DiaryList";
+import Footer from "components/Footer";
 import Header from "components/Header";
 import { DiaryStateContext } from "context/diary-context";
 import { useContext, useState } from "react";
@@ -49,6 +50,7 @@ export default function Home() {
         rightChild={<Button onClick={onIncreaseMonth} text={">"} />}
       />
       <DiaryList data={monthlyData} />
+      <Footer />
     </>
   );
 }

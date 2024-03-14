@@ -30,11 +30,11 @@ export default function DiaryList({ data }: DiaryListProps) {
   const sortedData = getSortedDate();
 
   return (
-    <div>
+    <div className="dark:text-white">
       <div className="my-5 flex gap-3">
         <select
           onChange={onChangeSortType}
-          className="bg-btnLight rounded-md py-3 px-5 cursor-pointer"
+          className="bg-btnLight dark:bg-btnDark  rounded-md py-3 px-5 cursor-pointer"
         >
           <option value={"latest"}>최신순</option>
           <option value={"oldest"}>오래된순</option>

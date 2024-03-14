@@ -19,7 +19,7 @@ export default function Button({
 }: ButtonProps) {
   const btnColor =
     type === ButtonType.DEFAULT
-      ? "bg-btnLight"
+      ? "bg-btnLight dark:bg-btnDark dark:text-white"
       : type === ButtonType.POSITIVE
       ? "bg-green text-white"
       : type === ButtonType.NEGATIVE

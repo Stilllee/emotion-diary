@@ -6,6 +6,7 @@ import Header from "components/Header";
 import { DiaryDispatchContext } from "context/diary-context";
 import { DiaryType } from "types/diary-types";
 import useDiary from "hooks/useDiary";
+import Footer from "components/Footer";
 
 export default function Edit() {
   const params = useParams();
@@ -49,6 +50,7 @@ export default function Edit() {
         }
       />
       <Editor initData={curDiaryItem} onUpdate={onSubmit} />
+      <Footer />
     </>
   );
 }

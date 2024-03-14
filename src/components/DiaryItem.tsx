@@ -13,7 +13,7 @@ export default function DiaryItem({
   const nav = useNavigate();
   const bgColor = emotionInfo[emotion].bgColor;
   return (
-    <div className="flex gap-4 justify-between py-4 border-b border-bgLight">
+    <div className="flex gap-4 justify-between py-4 border-b border-lineLight dark:border-lineDark">
       <div
         onClick={() => nav(`/diary/${id}`)}
         className={`${bgColor} min-w-32 h-20 flex justify-center cursor-pointer rounded-md`}

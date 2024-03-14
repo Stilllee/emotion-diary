@@ -14,8 +14,8 @@ export default function EmotionItem({
   onClick,
 }: EmotionItemProps) {
   const selectedColor = isSelected
-    ? `${emotionInfo[emotion].bgColor} text-white`
-    : "bg-btnLight";
+    ? `${emotionInfo[emotion].bgColor} text-white font-semibold text-lg`
+    : "bg-btnLight dark:bg-btnDark dark:text-lineLight";
   return (
     <div
       className={`${selectedColor}  p-5 rounded-md cursor-pointer text-center`}

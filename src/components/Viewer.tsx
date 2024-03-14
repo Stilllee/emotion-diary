@@ -10,7 +10,7 @@ export default function Viewer({ emotion, content }: ViewerProps) {
 
   return (
     <>
-      <section className="w-full mb-28 flex flex-col items-center text-center">
+      <section className="w-full mb-28 flex flex-col items-center text-center dark:text-white">
         <h4 className="font-bold text-xl my-7">오늘의 감정</h4>
         <div
           className={`${bgColor} w-64 h-64 rounded-md flex flex-col items-center justify-around text-white`}
@@ -21,9 +21,9 @@ export default function Viewer({ emotion, content }: ViewerProps) {
           </div>
         </div>
       </section>
-      <section className="w-full mb-28 flex flex-col items-center text-center">
+      <section className="w-full mb-28 flex flex-col items-center text-center dark:text-white">
         <h4 className="font-bold text-xl my-7">오늘의 일기</h4>
-        <div className="w-full bg-btnLight rounded-md break-words break-keep">
+        <div className="w-full bg-btnLight dark:bg-btnDark  rounded-md break-words break-keep">
           <p className="p-5 text-left text-lg">{content}</p>
         </div>
       </section>

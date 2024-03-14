@@ -1,5 +1,6 @@
 import Button from "components/Button";
 import Editor from "components/Editor";
+import Footer from "components/Footer";
 import Header from "components/Header";
 import { DiaryDispatchContext } from "context/diary-context";
 import { useContext } from "react";
@@ -27,6 +28,7 @@ export default function New() {
         leftChild={<Button text={"< 뒤로가기"} onClick={() => nav(-1)} />}
       />
       <Editor onCreate={onSubmit} />
+      <Footer />
     </>
   );
 }

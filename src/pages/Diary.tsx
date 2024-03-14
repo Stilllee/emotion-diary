@@ -1,4 +1,5 @@
 import Button from "components/Button";
+import Footer from "components/Footer";
 import Header from "components/Header";
 import Viewer from "components/Viewer";
 import useDiary from "hooks/useDiary";
@@ -28,6 +29,7 @@ export default function Diary() {
         }
       />
       <Viewer emotion={emotion} content={content} />
+      <Footer />
     </>
   );
 }
