@@ -1,5 +1,5 @@
 import "./App.css";
-import { useReducer, useRef } from "react";
+import { useContext, useReducer, useRef } from "react";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import Home from "pages/Home";
@@ -17,7 +17,7 @@ import {
 import { DiaryDispatchContext, DiaryStateContext } from "context/diary-context";
 import { Emotion } from "utils/emotion-utils";
 import NotFound from "pages/NotFound";
-import { ThemeProvider } from "context/theme-context";
+import ThemeContext, { ThemeProvider } from "context/theme-context";
 
 const mockData = [
   {
@@ -56,6 +56,7 @@ function reducer(state: DiaryType[], action: ActionType) {
 }
 
 function App() {
+  const { isDarkMode } = useContext(ThemeContext);
   const [data, dispatch] = useReducer(reducer, mockData);
   const idRef = useRef(3);
 
@@ -95,22 +96,18 @@ function App() {
 
   return (
     <>
-      <ToastContainer />
-      <ThemeProvider>
-        <DiaryStateContext.Provider value={data}>
-          <DiaryDispatchContext.Provider
-            value={{ onCreate, onUpdate, onDelete }}
-          >
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/new" element={<New />} />
-              <Route path="/diary/:id" element={<Diary />} />
-              <Route path="edit/:id" element={<Edit />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </DiaryDispatchContext.Provider>
-        </DiaryStateContext.Provider>
-      </ThemeProvider>
+      <ToastContainer theme={isDarkMode ? "dark" : "light"} />
+      <DiaryStateContext.Provider value={data}>
+        <DiaryDispatchContext.Provider value={{ onCreate, onUpdate, onDelete }}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/new" element={<New />} />
+            <Route path="/diary/:id" element={<Diary />} />
+            <Route path="edit/:id" element={<Edit />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </DiaryDispatchContext.Provider>
+      </DiaryStateContext.Provider>
     </>
   );
 }
