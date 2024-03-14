@@ -24,7 +24,7 @@ export default function Viewer({ emotion, content }: ViewerProps) {
       <section className="w-full my-7 flex flex-col items-center text-center dark:text-white">
         <h4 className="font-bold text-xl my-7">오늘의 일기</h4>
         <div className="w-full bg-btnLight dark:bg-btnDark rounded-md break-words break-keep">
-          <p className="p-5 text-left text-lg">{content}</p>
+          <p className="p-5 text-left text-lg whitespace-pre-line">{content}</p>
         </div>
       </section>
     </>
