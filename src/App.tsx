@@ -24,13 +24,15 @@ const mockData = [
     id: 1,
     createdDate: new Date("2024-03-10").getTime(),
     emotion: Emotion.HAPPY,
-    content: "1번 일기 내용",
+    content:
+      "1번 일기 내용. 오늘은 날씨가 좋아서 기분이 좋다. 뭔가 새로운 일을 시작하기 좋은 날이다.",
   },
   {
     id: 2,
     createdDate: new Date("2024-03-09").getTime(),
-    emotion: Emotion.GOOD,
-    content: "2번 일기 내용",
+    emotion: Emotion.NORMAL,
+    content:
+      "2번 일기 내용. 오늘은 날씨가 흐려서 기분이 별로다. 하지만 내일은 더 좋아질 것 같아서 기대된다.",
   },
   {
     id: 3,
