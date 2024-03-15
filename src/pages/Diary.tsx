@@ -13,6 +13,7 @@ import Letter from "components/Letter";
 export default function Diary() {
   const [gptData, setGptData] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [hasReceived, setHasReceived] = useState(false);
 
   const handleClickAPICall = async () => {
     try {
@@ -21,6 +22,7 @@ export default function Diary() {
         prompt: JSON.stringify(content),
       });
       setGptData(JSON.parse(message).action);
+      setHasReceived(true);
     } catch (error) {
       console.error(error);
     } finally {
@@ -52,11 +54,17 @@ export default function Diary() {
       <Viewer emotion={emotion} content={content} />
       <div className="pb-24 flex flex-col justify-center">
         <button
-          className="bg-[#3498db] dark:bg-[#3498db] text-white p-2 rounded-lg mb-5 flex justify-center items-center gap-2"
+          className="bg-[#3498db] dark:bg-[#3498db] text-white p-2 rounded-md mb-5"
           onClick={handleClickAPICall}
+          disabled={hasReceived}
         >
-          <span>답장 받기</span>
-          <GoPaperAirplane />
+          {hasReceived ? (
+            "답장이 도착했어요"
+          ) : (
+            <div className="flex justify-center items-center gap-2">
+              답장 받기 <GoPaperAirplane />
+            </div>
+          )}
         </button>
         <Letter letterData={gptData} isLoading={isLoading} />
       </div>
