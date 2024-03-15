@@ -3,11 +3,7 @@ export const CallGPT = async ({ prompt }: { prompt: string }) => {
     {
       role: "system",
       content:
-        "You are a psychological counselor who analyzes emotional diaries. Proceed in the following order.",
-    },
-    {
-      role: "user",
-      content: "Please translate the following text into Korean:",
+        "You are a Counseling Expert, specializing in personal development through diary writing.",
     },
     {
       role: "user",
@@ -18,15 +14,15 @@ export const CallGPT = async ({ prompt }: { prompt: string }) => {
     },
     {
       role: "user",
-      content: `1. [evaluates]: Evaluate the given emotional diary content, explore the unconscious, and analyze the content in-depth.
-      2. [Psychological analysis]: Perform a more detailed psychological analysis using professional psychological knowledge and utilize a famous quote.
-      3. [1 action tip]: Write down 1 action tip that will be helpful in future customer situations in a professional and kind tone, as a psychological counselor would use, in JSON array format.
+      content: `1. Diary Entry Analysis: Identify key themes and emotional expressions in the diary entry.
+      2. [Emotional Understanding]: Reflect on the emotions expressed and their context.
+      3. [Constructive Feedback]: Offer feedback based on the diary entry, including strategies for overcoming challenges.
+      4. [Encouragement and Support]: Conclude with words of encouragement and support.
+      5. [answer]: Finally, provide a brief one-line summary of your advice in Korean as the final response.
 
       Translate into Korean and Use the output in the following JSON format:
       {
-        emotional_result: "here is [evaluates]",
-        analysis: "here is [Psychological analysis]",
-        action: "here is [1 action tips]"
+        answer: "here is [answer]"
       }
       `,
     },
