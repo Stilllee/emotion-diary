@@ -12,6 +12,7 @@ export interface DiaryType {
   createdDate: number;
   emotion: Emotion;
   content: string;
+  gptAnswer?: string;
 }
 
 export type CreateDiaryType = Omit<DiaryType, "id">;

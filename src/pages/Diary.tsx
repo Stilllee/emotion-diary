@@ -3,17 +3,34 @@ import Footer from "components/Footer";
 import Header from "components/Header";
 import Viewer from "components/Viewer";
 import useDiary from "hooks/useDiary";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getStringDate } from "utils/get-string-date";
 import { GoPaperAirplane } from "react-icons/go";
 import { CallGPT } from "api/gpt";
 import Letter from "components/Letter";
+import { DiaryType } from "types/diary-types";
 
 export default function Diary() {
-  const [gptData, setGptData] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [hasReceived, setHasReceived] = useState(false);
+  const [gptAnswer, setGptAnswer] = useState("");
+
+  const params = useParams();
+  const id = Number(params.id);
+
+  const getDiaries = () => {
+    return JSON.parse(localStorage.getItem("diary") || "[]") as DiaryType[];
+  };
+
+  useEffect(() => {
+    const diaries = getDiaries();
+    const currentDiary = diaries.find((diary) => diary.id === id);
+    if (currentDiary && currentDiary.gptAnswer) {
+      setGptAnswer(currentDiary.gptAnswer);
+      setHasReceived(true);
+    }
+  }, [id]);
 
   const handleClickAPICall = async () => {
     try {
@@ -21,8 +38,18 @@ export default function Diary() {
       const message = await CallGPT({
         prompt: JSON.stringify(content),
       });
-      setGptData(message);
       setHasReceived(true);
+
+      const parsedMessage = JSON.parse(message);
+      if (parsedMessage && parsedMessage.answer) {
+        const diaries = getDiaries();
+        const diaryIndex = diaries.findIndex((diary) => diary.id === id);
+        if (diaryIndex !== -1) {
+          diaries[diaryIndex].gptAnswer = parsedMessage.answer;
+          localStorage.setItem("diary", JSON.stringify(diaries));
+        }
+        setGptAnswer(parsedMessage.answer);
+      }
     } catch (error) {
       console.error(error);
     } finally {
@@ -30,8 +57,6 @@ export default function Diary() {
     }
   };
 
-  const params = useParams();
-  const id = Number(params.id);
   const nav = useNavigate();
 
   const curDiaryItem = useDiary(id);
@@ -41,8 +66,6 @@ export default function Diary() {
   }
 
   const { createdDate, emotion, content } = curDiaryItem;
-
-  const answer = gptData ? JSON.parse(gptData).answer : "";
 
   return (
     <div className="overflow-hidden">
@@ -68,7 +91,7 @@ export default function Diary() {
             </div>
           )}
         </button>
-        <Letter letterData={answer} isLoading={isLoading} />
+        <Letter letterData={gptAnswer} isLoading={isLoading} />
       </div>
       <Footer />
     </div>
