@@ -10,11 +10,18 @@ const ThemeContext = createContext({
 });
 
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const loadDarkModeSetting = () => {
+    const storedDarkModeSetting = localStorage.getItem("darkMode");
+    return storedDarkModeSetting ? JSON.parse(storedDarkModeSetting) : false;
+  };
+
+  const [isDarkMode, setIsDarkMode] = useState(loadDarkModeSetting());
 
   useEffect(() => {
     const body = document.querySelector("body");
     isDarkMode ? body?.classList.add("dark") : body?.classList.remove("dark");
+
+    localStorage.setItem("darkMode", JSON.stringify(isDarkMode));
 
     return () => {
       body?.classList.remove("dark");
