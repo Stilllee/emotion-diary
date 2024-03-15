@@ -1,5 +1,5 @@
 import "./App.css";
-import { useContext, useReducer, useRef } from "react";
+import { useContext, useEffect, useReducer, useRef, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import Home from "pages/Home";
@@ -15,52 +15,70 @@ import {
   onUpdateType,
 } from "types/diary-types";
 import { DiaryDispatchContext, DiaryStateContext } from "context/diary-context";
-import { Emotion } from "utils/emotion-utils";
 import NotFound from "pages/NotFound";
 import ThemeContext from "context/theme-context";
 
-const mockData = [
-  {
-    id: 1,
-    createdDate: new Date("2024-03-10").getTime(),
-    emotion: Emotion.HAPPY,
-    content:
-      "1번 일기 내용. 오늘은 날씨가 좋아서 기분이 좋다. 뭔가 새로운 일을 시작하기 좋은 날이다.",
-  },
-  {
-    id: 2,
-    createdDate: new Date("2024-03-09").getTime(),
-    emotion: Emotion.NORMAL,
-    content:
-      "2번 일기 내용. 오늘은 날씨가 흐려서 기분이 별로다. 하지만 내일은 더 좋아질 것 같아서 기대된다.",
-  },
-  {
-    id: 3,
-    createdDate: new Date("2024-02-14").getTime(),
-    emotion: Emotion.NORMAL,
-    content: "3번 일기 내용",
-  },
-];
-
 function reducer(state: DiaryType[], action: ActionType) {
+  let nextState;
   switch (action.type) {
-    case Action.CREATE:
-      return [action.data, ...state];
-    case Action.UPDATE:
-      return state.map((item) =>
+    case Action.INIT:
+      return action.data;
+    case Action.CREATE: {
+      nextState = [action.data, ...state];
+      break;
+    }
+    case Action.UPDATE: {
+      nextState = state.map((item) =>
         String(item.id) === String(action.data.id) ? action.data : item
       );
-    case Action.DELETE:
-      return state.filter((item) => String(item.id) !== String(action.id));
+      break;
+    }
+    case Action.DELETE: {
+      nextState = state.filter((item) => String(item.id) !== String(action.id));
+      break;
+    }
     default:
       return state;
   }
+
+  localStorage.setItem("diary", JSON.stringify(nextState));
+  return nextState;
 }
 
 function App() {
   const { isDarkMode } = useContext(ThemeContext);
-  const [data, dispatch] = useReducer(reducer, mockData);
-  const idRef = useRef(3);
+  const [isLoading, setIsLoading] = useState(true);
+  const [data, dispatch] = useReducer(reducer, []);
+  const idRef = useRef(0);
+
+  useEffect(() => {
+    const storedData = localStorage.getItem("diary");
+    if (!storedData) {
+      setIsLoading(false);
+      return;
+    }
+
+    const parsedData = JSON.parse(storedData);
+    if (!Array.isArray(parsedData)) {
+      setIsLoading(false);
+      return;
+    }
+
+    let maxId = 0;
+    parsedData.forEach((item) => {
+      if (item.id > maxId) {
+        maxId = item.id;
+      }
+    });
+
+    idRef.current = maxId + 1;
+
+    dispatch({
+      type: Action.INIT,
+      data: parsedData,
+    });
+    setIsLoading(false);
+  }, []);
 
   const onCreate: onCreateType = (createdDate, emotion, content) => {
     dispatch({
@@ -95,6 +113,10 @@ function App() {
     });
     toast.success("일기가 삭제되었어요 😺");
   };
+
+  if (isLoading) {
+    return <div>일기를 불러오는 중이에요 📒</div>;
+  }
 
   return (
     <>

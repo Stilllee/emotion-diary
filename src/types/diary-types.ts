@@ -4,6 +4,7 @@ export enum Action {
   CREATE = "CREATE",
   UPDATE = "UPDATE",
   DELETE = "DELETE",
+  INIT = "INIT",
 }
 
 export interface DiaryType {
@@ -33,7 +34,8 @@ export type onDeleteType = (id: number) => void;
 export type ActionType =
   | { type: Action.CREATE; data: DiaryType }
   | { type: Action.UPDATE; data: DiaryType }
-  | { type: Action.DELETE; id: number };
+  | { type: Action.DELETE; id: number }
+  | { type: Action.INIT; data: DiaryType[] };
 
 export interface DispatchContextType {
   onCreate: onCreateType;
