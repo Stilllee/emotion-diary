@@ -22,12 +22,11 @@ export default function Diary() {
       });
       setGptData(JSON.parse(message).action);
     } catch (error) {
+      console.error(error);
     } finally {
       setIsLoading(false);
     }
   };
-
-  console.log("gptData", gptData);
 
   const params = useParams();
   const id = Number(params.id);
@@ -40,8 +39,6 @@ export default function Diary() {
   }
 
   const { createdDate, emotion, content } = curDiaryItem;
-
-  console.log(gptData);
 
   return (
     <div className="overflow-hidden">

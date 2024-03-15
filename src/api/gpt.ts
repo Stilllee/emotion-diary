@@ -1,4 +1,4 @@
-export const CallGPT = async ({ prompt }) => {
+export const CallGPT = async ({ prompt }: { prompt: string }) => {
   const messages = [
     {
       role: "system",
@@ -46,7 +46,6 @@ export const CallGPT = async ({ prompt }) => {
     }),
   });
   const responseData = await response.json();
-  console.log(responseData);
 
   const message = responseData.choices[0].message.content;
 
