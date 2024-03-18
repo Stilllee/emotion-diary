@@ -12,8 +12,12 @@ export default function NotFound() {
         <span>4</span>
       </div>
       <p className="uppercase text-7xl font-bold text-red">not found</p>
-      <p className="text-5xl font-bold mt-20">페이지를 찾을 수 없습니다.</p>
-      <p className="text-lg my-6">올바른 URL을 입력했는지 확인하세요.</p>
+      <p className="text-5xl font-bold mt-20 dark:text-white">
+        페이지를 찾을 수 없습니다.
+      </p>
+      <p className="text-lg my-6 dark:text-white">
+        올바른 URL을 입력했는지 확인하세요.
+      </p>
       <Button
         text={"홈으로 돌아가기"}
         onClick={() => nav("/", { replace: true })}
