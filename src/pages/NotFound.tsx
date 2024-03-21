@@ -1,9 +1,11 @@
 import Button from "components/Button";
+import usePageTitle from "hooks/usePageTitle";
 import { useNavigate } from "react-router-dom";
 import { Emotion, getEmotionImage } from "utils/emotion-utils";
 
 export default function NotFound() {
   const nav = useNavigate();
+  usePageTitle("찾을 수 없는 페이지");
   return (
     <div className="flex flex-col items-center p-10">
       <div className="flex justify-center items-center text-[10rem] font-bold text-red">

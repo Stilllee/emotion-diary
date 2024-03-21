@@ -10,6 +10,7 @@ import { GoPaperAirplane } from "react-icons/go";
 import { CallGPT } from "api/gpt";
 import Letter from "components/Letter";
 import { DiaryType } from "types/diary-types";
+import usePageTitle from "hooks/usePageTitle";
 
 export default function Diary() {
   const [isLoading, setIsLoading] = useState(false);
@@ -18,6 +19,7 @@ export default function Diary() {
 
   const params = useParams();
   const id = Number(params.id);
+  usePageTitle(`${id}번 일기`);
 
   const getDiaries = () => {
     return JSON.parse(localStorage.getItem("diary") || "[]") as DiaryType[];

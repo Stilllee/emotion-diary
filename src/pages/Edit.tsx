@@ -7,6 +7,7 @@ import { DiaryDispatchContext } from "context/diary-context";
 import { DiaryType } from "types/diary-types";
 import useDiary from "hooks/useDiary";
 import Footer from "components/Footer";
+import usePageTitle from "hooks/usePageTitle";
 
 export default function Edit() {
   const params = useParams();
@@ -15,6 +16,7 @@ export default function Edit() {
   const dispatchContext = useContext(DiaryDispatchContext);
 
   const curDiaryItem = useDiary(id);
+  usePageTitle(`${id}번 일기 수정`);
 
   const onClickDelete = () => {
     if (window.confirm("일기를 정말 삭제할까요? 다시 복구되지 않아요!")) {

@@ -3,6 +3,7 @@ import DiaryList from "components/DiaryList";
 import Footer from "components/Footer";
 import Header from "components/Header";
 import { DiaryStateContext } from "context/diary-context";
+import usePageTitle from "hooks/usePageTitle";
 import { useContext, useState } from "react";
 import { DiaryType } from "types/diary-types";
 
@@ -32,6 +33,7 @@ const getMonthlyData = (pivotDate: Date, data: DiaryType[]) => {
 export default function Home() {
   const data = useContext(DiaryStateContext);
   const [pivotDate, setPivotDate] = useState(new Date());
+  usePageTitle("감정 일기장");
 
   const monthlyData = getMonthlyData(pivotDate, data);
 
