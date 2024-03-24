@@ -1,5 +1,7 @@
 # Emotion Diary V2
 
+![](https://i.imgur.com/kLtMMyW.png)
+
 <br>
 
 ## 목차
